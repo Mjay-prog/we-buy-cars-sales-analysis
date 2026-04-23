@@ -42,3 +42,18 @@ SELECT Brand,
 FROM we_buy_cars_sales_dataset_modified
 GROUP BY Brand, Model
 ORDER BY Avg_Days ASC;
+
+---Which branch moves stock fast?
+SELECT Branch,
+       AVG(DATEDIFF(Date_Sold, Date_Acquired)) AS Avg_Days
+FROM we_buy_cars_sales_dataset_modified
+GROUP BY Branch
+ORDER BY Avg_Days ASC;
+
+---Which cars move fast and which ones move slow?
+SELECT Brand,
+       Model,
+       AVG(DATEDIFF(Date_Sold, Date_Acquired)) AS Avg_Days
+FROM we_buy_cars_sales_dataset_modified
+GROUP BY Brand, Model
+ORDER BY Avg_Days ASC;
